@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{HTTP_HOST} ^(www\.)?mysite\.com
+RewriteRule ^(.*)$ https://www.mysite.com/$1 [R,L]
+RewriteCond $1 !^(index\.php|assets|images|js|css|uploads|favicon.png|resources|robots\.txt)
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
